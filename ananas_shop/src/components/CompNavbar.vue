@@ -320,7 +320,7 @@ export default {
 </script>
 
 <style>
-    h3, h4, .navbar-nav p {
+    .navbar-nav h3, .navbar-nav h4, .navbar-nav p {
         white-space: nowrap;
     }
 
