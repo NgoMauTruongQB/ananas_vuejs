@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-md d-flex justify-content-center align-items-center row">
-        <a class="navbar-brand ml-4 mr-4 " href="#">
+        <a class="navbar-brand ml-4 mr-4 " href="#" v-on:click="$emit('CompCallEvent', 0)">
             <img src="src\assets\img\Logo_Ananas_Header.svg" alt="">
         </a>
 
@@ -8,7 +8,7 @@
             <ul class="navbar-nav ml-5 d-flex justify-content-center align-items-center ">
                 <li class="nav-item">
                     <div class="d-flex align-items-center">
-                        <a class="nav-link d-none d-lg-block pr-4" href="#"> Sản phẩm 
+                        <a class="nav-link d-none d-lg-block pr-4" href="#" v-on:click="$emit('CompCallEvent', 1)"> Sản phẩm 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"> 
                             <path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
                         </a>
@@ -326,6 +326,10 @@ export default {
 
     .navbar-nav {
         position: relative;
+    }
+
+    .navbar a {
+        cursor: pointer;
     }
 
     .navbar .navbar-brand img {

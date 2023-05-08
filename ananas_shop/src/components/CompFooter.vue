@@ -75,7 +75,7 @@
 
 <script>
 export default {
-    name:'footer',
+    name:'comp-footer',
     data() {
         return {
 

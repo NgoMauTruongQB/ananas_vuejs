@@ -1,12 +1,14 @@
 <template>
     <div id="app" class="container" >
         <CompTopHeader/>
-        <CompNavbar/>
-        <CompTextSlide/>  
-        <CompSlideMain/>
-        <CompBanner/>
-        <CompHomeBuy/>
-        <CompSocial/>
+        <CompNavbar v-on:CompCallEvent="handleCompCall"/>
+        <CompTextSlide/> 
+        <div v-if="CompCall === 0">
+            <HomePage/>
+        </div>
+        <div v-if="CompCall === 1">
+            <ProductPage/>
+        </div>
         <CompFooter/>
     </div>
 </template>
@@ -15,26 +17,30 @@
 import CompTopHeader from "./components/CompTopHeader.vue";
 import CompTextSlide from "./components/CompTextSlide.vue";
 import CompNavbar from "./components/CompNavbar.vue";
-import CompSlideMain from "./components/CompSlide.vue";
-import CompBanner from "./components/CompBanner.vue";
-import CompHomeBuy from "./components/CompHomeBuy.vue";
-import CompSocial from "./components/CompSocial.vue";
+import HomePage from "./components/HomePage.vue";
+import ProductPage from "./components/ProductPage.vue";
 import CompFooter from "./components/CompFooter.vue";
 export default {
     name: "app",
     data() {
-        return {};
+        return {
+            CompCall: 0,
+        };
     },
     components: {
         CompTopHeader,
         CompTextSlide,
         CompNavbar,
-        CompSlideMain,
-        CompBanner,
-        CompHomeBuy,
-        CompSocial,
-        CompFooter,
+        HomePage,
+        ProductPage,
+        CompFooter
     },
+    methods: {
+        handleCompCall(payload) {
+            console.log("CompCallEvent triggered with payload:", payload);
+            this.CompCall = payload
+        },
+    }
 };
 </script>
 
@@ -58,5 +64,9 @@ export default {
         p {
             font-size: 14px;
         }
+    }
+
+    li {
+        list-style: none;
     }
 </style>
