@@ -1,6 +1,6 @@
 <template>
     <div id="app" class="container" >
-        <CompTopHeader/>
+        <CompTopHeader v-on:CompCallEvent="handleCompCall"/>
         <CompNavbar v-on:CompCallEvent="handleCompCall"/>
         <CompTextSlide/> 
         <div v-if="CompCall === 0">
@@ -8,6 +8,27 @@
         </div>
         <div v-if="CompCall === 1">
             <ProductPage/>
+        </div>
+        <div v-if="CompCall === 2">
+            <SaleOffPage/>
+        </div>
+        <div v-if="CompCall === 3">
+            <CompDiscoverYou/>
+        </div>
+        <div v-if="CompCall === 4">
+            <CompCart v-on:CompCallEvent="handleCompCall"/>
+        </div>
+        <div v-if="CompCall === 5">
+            <CompLogin v-on:CompCallEvent="handleCompCall"/>
+        </div>
+        <div v-if="CompCall === 6">
+            <CompFavourite v-on:CompCallEvent="handleCompCall"/>
+        </div>
+        <div v-if="CompCall === 7">
+            <CompFindShop v-on:CompCallEvent="handleCompCall"/>
+        </div>
+        <div v-if="CompCall === 8">
+            <CompOrderLook/>
         </div>
         <CompFooter/>
     </div>
@@ -19,7 +40,14 @@ import CompTextSlide from "./components/CompTextSlide.vue";
 import CompNavbar from "./components/CompNavbar.vue";
 import HomePage from "./components/HomePage.vue";
 import ProductPage from "./components/ProductPage.vue";
+import SaleOffPage from "./components/SaleOff.vue";
 import CompFooter from "./components/CompFooter.vue";
+import CompDiscoverYou from "./components/DiscoverYou.vue";
+import CompCart from "./components/CompCart.vue";
+import CompLogin from "./components/CompLogin.vue";
+import CompFavourite from "./components/CompFavourite.vue";
+import CompFindShop from "./components/CompFindShop.vue";
+import CompOrderLook from "./components/CompOrderLook.vue";
 export default {
     name: "app",
     data() {
@@ -33,7 +61,14 @@ export default {
         CompNavbar,
         HomePage,
         ProductPage,
-        CompFooter
+        SaleOffPage,
+        CompFooter,
+        CompDiscoverYou,
+        CompCart,
+        CompLogin,
+        CompFavourite,
+        CompFindShop,
+        CompOrderLook
     },
     methods: {
         handleCompCall(payload) {
@@ -46,6 +81,7 @@ export default {
 
 <style>
     * {
+        box-sizing: border-box;
         font-family: sans-serif, Arial, Helvetica;
         margin: 0;
         padding: 0;
