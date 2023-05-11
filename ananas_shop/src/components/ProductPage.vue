@@ -69,8 +69,8 @@
                         v-for="(item, index) in listProduct" 
                         v-bind:key="index">
                         <div class="img-div" >
-                            <img :src="'src/assets/img/product/'+ item.img1" alt="" class="item-img1">
-                            <img :src="'src/assets/img/product/'+ item.img2" alt="" class="item-img2">
+                            <img :src="'src/assets/img/product/'+ item.listImg[0]" alt="" class="item-img1">
+                            <img :src="'src/assets/img/product/'+ item.listImg[1]" alt="" class="item-img2">
                             <div class="sold-out" v-if="item.number === 0"> Hết hàng </div>
                             <div class="limited"
                                 v-if="item.limited === 1">
@@ -89,7 +89,7 @@
 
                         </div>
                         <div class="info">
-                            <p class="item-name">{{item.name}}</p>
+                            <p class="item-name" v-on:click="selectProduct(item); $emit('CompCallEvent', 9)">{{item.name}}</p>
                             <p class="item-type">{{item.type}}</p>
                             <p class="item-cost">{{ item.cost | formatPrice }}</p>
                         </div>
@@ -109,83 +109,83 @@ export default {
                 {   name: 'Vintas Jazico - High Top',
                     type: 'Royal White',
                     cost: '780000',
-                    img1: 'Pro_AV00165_1.jpeg',
-                    img2: 'Pro_AV00165_2.jpeg',
+                    listImg: ['Pro_AV00165_1.jpeg','Pro_AV00165_2.jpeg','Pro_AV00165_3.jpeg','Pro_AV00165_4.jpeg','Pro_AV00165_5.jpeg','Pro_AV00165_6.jpeg','Pro_AV00165_7.jpeg'],
                     tym: 1,
                     limited: 0,
                     number: 112,
+                    id: 'AV00165',
                 },
                 {   name: 'Urbas Corluray Mix - Low Top',
                     type: 'Corluray Mix',
                     cost: '610000',
-                    img1: 'Pro_AV00174_1.jpeg',
-                    img2: 'Pro_AV00174_2.jpeg',
+                    listImg: ['Pro_AV00174_1.jpeg','Pro_AV00174_2.jpeg','Pro_AV00174_3.jpeg','Pro_AV00174_4.jpeg','Pro_AV00174_5.jpeg','Pro_AV00174_6.jpeg','Pro_AV00174_7.jpeg','Pro_AV00174_8.jpeg'],
                     tym: 0,
                     limited: 0,
                     number: 99,
+                    id: 'AV00174',
                 },
                 {   name: 'Track 6 I.S.E.E',
                     type: 'Pure White/Icy Blue',
                     cost: '1490000',
-                    img1: 'Pro_A6T012_1.jpg',
-                    img2: 'Pro_A6T012_2.jpg',
+                    listImg: ['Pro_A6T012_1.jpg','Pro_A6T012_2.jpg','Pro_A6T012_3.jpg','Pro_A6T012_4.jpg','Pro_A6T012_5.jpg','Pro_A6T012_6.jpg','Pro_A6T012_7.jpg','Pro_A6T012_8.jpg','Pro_A6T012_9.jpg','Hop_ISEE.jpeg','Tuibac.jpeg'],
                     tym: 0,
                     limited: 1,
                     number: 12,
+                    id: 'A6T012',
                 },
                 {   name: 'Track 6 Jazico - Low Top',
                     type: 'Royal White',
                     cost: '1190000',
-                    img1: 'Pro_A6T016_1.jpeg',
-                    img2: 'Pro_A6T016_2.jpeg',
+                    listImg: ['Pro_A6T016_1.jpeg','Pro_A6T016_2.jpeg','Pro_A6T016_3.jpeg','Pro_A6T016_4.jpeg','Pro_A6T016_5.jpeg','Pro_A6T016_6.jpeg','Pro_A6T016_7.jpeg','Pro_A6T016_8.jpeg','Pro_A6T016_9.jpeg','Pro_A6T016_10.jpeg','Pro_A6T016_11.jpeg'],
                     tym: 0,
                     limited: 0,
                     number: 122,
+                    id: 'A6T016',
                 },
                 {   name: 'Urbas Love+ 22 - High Top',
                     type: 'Rustic',
                     cost: '850000',
-                    img1: 'Lgbt97222-1.jpg',
-                    img2: 'Lgbt1080-1.jpg',
+                    listImg: ['Lgbt97222-1.jpg','Lgbt1080-1.jpg','Lgbt0029-1.jpg','Lgbt0051-1.jpg','Lgbt2107-1.jpg','Lgbt3138-1.jpg','Lgbt3139-1.jpg'],
                     tym: 0,
                     limited: 1,
                     number: 0,
+                    id: 'ALP2022',
                 },
                 {   name: 'Urbas SC - Mule',
                     type: 'Dark Purple',
                     cost: '580000',
-                    img1: 'Pro_AV00098_1.jpg',
-                    img2: 'Pro_AV00098_2.jpg',
+                    listImg: ['Pro_AV00098_1.jpg','Pro_AV00098_2.jpg','Pro_AV00098_3.jpg','Pro_AV00098_4.jpg','Pro_AV00098_5.jpg','Pro_AV00098_6.jpg','Pro_AV00098_7.jpg','Pro_AV00098_8.jpg'],
                     tym: 0,
                     limited: 0,
                     number: 10,
+                    id: 'AV00098',
                 },
                 {   name: 'Pattas Living Journey - Low Top',
                     type: 'Vaporous Gray',
                     cost: '720000',
-                    img1: 'Pro_AV00189_1.jpg',
-                    img2: 'Pro_AV00189_2.jpg',
+                    listImg: ['Pro_AV00189_1.jpg','Pro_AV00189_2.jpg','Pro_AV00189_3.jpg','Pro_AV00189_4.jpg','Pro_AV00189_5.jpg'],
                     tym: 0,
                     limited: 0,
                     number: 100,
+                    id: 'AV00189',
                 },
                 {   name: 'Ananas "Coppy" Store Bag 001 - Black',
                     type: 'Black',
                     cost: '250000',
-                    img1: 'Pro_ASTB001_1.jpeg',
-                    img2: 'Pro_ASTB001_9.jpg',
+                    listImg: ['Pro_ASTB001_1.jpeg','Pro_ASTB001_9.jpg','Pro_ASTB001_3.jpeg','Pro_ASTB001_4.jpeg','Pro_ASTB001_6.jpeg','Pro_ASTB001_7.jpeg','Pro_ASTB001_8.jpg'],
                     tym: 0,
                     limited: 0,
                     number: 13,
+                    id: 'ASTB001',
                 },
                 {   name: 'Basas Workaday - Low Top',
                     type: 'Real Teal',
                     cost: '580000',
-                    img1: 'Pro_AV00199_1.jpg',
-                    img2: 'Pro_AV00199_2.jpg',
+                    listImg: ['Pro_AV00199_1.jpg','Pro_AV00199_2.jpg','Pro_AV00199_3.jpg','Pro_AV00199_4.jpg','Pro_AV00199_5.jpg'],
                     tym: 0,
                     limited: 0,
                     number: 12,
+                    id: 'AV00199',
                 },
             ],
             size: [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46],
@@ -194,8 +194,10 @@ export default {
     methods : {
         tymAction(index) {
             this.listProduct[index].tym = this.listProduct[index].tym === 0 ? 1 : 0;
+        },
+        selectProduct(item) {
+            this.$emit('product-selected', item);
         }
-        
     },
     filters: {
         formatPrice(value) {
@@ -396,6 +398,11 @@ export default {
         margin-top: 20px;
         text-align: center;
         margin-bottom: 40px;
+    }
+
+    .product-page .info p:first-child:hover {
+        color: #f15e2c;
+        cursor: pointer;
     }
 
     .product-page .info p {

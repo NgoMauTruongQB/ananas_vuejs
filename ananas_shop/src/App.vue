@@ -7,7 +7,7 @@
             <HomePage/>
         </div>
         <div v-if="CompCall === 1">
-            <ProductPage/>
+            <ProductPage v-on:CompCallEvent="handleCompCall" @product-selected="handleProductSeleted"/>
         </div>
         <div v-if="CompCall === 2">
             <SaleOffPage/>
@@ -30,6 +30,9 @@
         <div v-if="CompCall === 8">
             <CompOrderLook/>
         </div>
+        <div v-if="CompCall === 9">
+            <CompProductDetails :productSelected="productSelected " v-on:CompCallEvent="handleCompCall"/>
+        </div>
         <CompFooter/>
     </div>
 </template>
@@ -48,11 +51,13 @@ import CompLogin from "./components/CompLogin.vue";
 import CompFavourite from "./components/CompFavourite.vue";
 import CompFindShop from "./components/CompFindShop.vue";
 import CompOrderLook from "./components/CompOrderLook.vue";
+import CompProductDetails from "./components/CompProductDetails.vue";
 export default {
     name: "app",
     data() {
         return {
-            CompCall: 0,
+            CompCall: 9,
+            productSelected: {},
         };
     },
     components: {
@@ -68,13 +73,17 @@ export default {
         CompLogin,
         CompFavourite,
         CompFindShop,
-        CompOrderLook
+        CompOrderLook,
+        CompProductDetails
     },
     methods: {
         handleCompCall(payload) {
             console.log("CompCallEvent triggered with payload:", payload);
             this.CompCall = payload
         },
+        handleProductSeleted(data) {
+            this.productSelected = data;
+        }
     }
 };
 </script>
